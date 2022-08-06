@@ -1,0 +1,146 @@
+<html>
+	<head>
+		<title>Jogo da Velha 2x2</title>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    <style>
+        .jogo{
+            border: solid 1px #000;
+            padding: 20px;
+            background-color: #2E2E2E;
+            border-radius: 10px;
+            box-shadow: 1px 1px 5px #000;
+        }
+        .estilo1, .estilo2{
+            margin: 5px;
+            background-color: white;
+            border-radius: 10px;
+        }
+        .estilo1{
+            color: green;
+        }
+        .estilo2{
+            color: red;
+        }
+        .btn{
+            margin: 5px;
+            box-shadow: 1px 1px 1px #000;
+        }
+        @media (max-width: 575.98px){
+          .jogo{
+            margin-top: 40px;
+          }
+          .estilo1, .estilo2{
+            width: 60px;
+            height: 50px;
+          }
+          .estilo1{
+            color: green;
+          }
+          .estilo2{
+            color: red;
+          }
+          .btn{
+            width: 60px;
+            height: 50px;
+          }
+      }
+      @media (min-width: 576px) and (max-width: 767.98px){
+        .jogo{
+            margin-top: 50px;
+          }
+        .estilo1, .estilo2{
+            width: 70px;
+            height: 60px;
+          }
+        .btn{
+            width: 70px;
+            height: 60px;
+          }
+      }
+      @media (min-width: 768px) and (max-width: 1199.98px){
+        .jogo{
+            margin-top: 60px;
+          }
+        .estilo1, .estilo2{
+            width: 80px;
+            height: 70px;
+          }
+        .btn{
+            width: 80px;
+            height: 70px;
+          }
+      }
+      @media (min-width: 1200px){
+        .jogo{
+            margin-top: 70px;
+          }
+        .estilo1, .estilo2{
+            width: 120px;
+            height: 110px;
+          }
+        .btn{
+            width: 120px;
+            height: 110px;
+          }
+      }
+    </style>   
+	</head>
+  <body style="background: #D9D9D9">
+    <div class="container">
+      <div class="row">
+        <div class="col d-flex justify-content-center">
+          <div class="jogo">
+            <div class="row">
+              <input type="button" class="btn btn-dark btn-lg font-weight-light" id="casa1" onclick="imagem('casa1',1)">
+              <input type="button" class="btn btn-dark btn-lg font-weight-light" id="casa2" onclick="imagem('casa2',2)">
+              <input type="button" class="btn btn-dark btn-lg font-weight-light" id="casa3" onclick="imagem('casa3',3)">
+            </div>
+            
+            <div class="row">
+              <input type="button" class="btn btn-dark btn-lg font-weight-light" id="casa4" onclick="imagem('casa4',4)">
+              <input type="button" class="btn btn-dark btn-lg font-weight-light" id="casa5" onclick="imagem('casa5',5)">
+              <input type="button" class="btn btn-dark btn-lg font-weight-light" id="casa6" onclick="imagem('casa6',6)"> 
+            </div>
+
+            <div class="row">
+              <input type="button" class="btn btn-dark btn-lg font-weight-light" id="casa7" onclick="imagem('casa7',7)">
+              <input type="button" class="btn btn-dark btn-lg font-weight-light" id="casa8" onclick="imagem('casa8',8)">
+              <input type="button" class="btn btn-dark btn-lg font-weight-light" id="casa9" onclick="imagem('casa9',9)">
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>    
+    <script type="text/javascript">
+        var cont=0
+        var lista = Array()
+        lista=[0,0,0,0,0,0,0,0,0,0]
+
+        function imagem(casa,valor){
+            if(lista[valor]==0){
+              if(cont%2==0){
+                document.getElementById(casa).value='x'
+                lista[valor]=1
+                document.getElementById(casa).className = 'estilo2'
+                
+              }else{
+                document.getElementById(casa).value='o'
+                lista[valor]=-1
+                document.getElementById(casa).className = 'estilo1'
+              }
+            }else{
+                alert('Espaço já preenchido')
+            }
+            cont++
+
+            if((lista[1]==1 && lista[2]==1 && lista[3]==1)||(lista[4]==1 && lista[5]==1 && lista[6]==1)||(lista[7]==1 && lista[8]==1 && lista[9]==1)||(lista[1]==1 && lista[5]==1 && lista[9]==1)||(lista[3]==1 && lista[5]==1 && lista[7]==1)||(lista[1]==1 && lista[4]==1 && lista[7]==1)||(lista[2]==1 && lista[5]==1 && lista[8]==1)||(lista[3]==1 && lista[6]==1 && lista[9]==1)){
+              window.location.href='vit.html'
+            }
+            else if((lista[1]==-1 && lista[2]==-1 && lista[3]==-1)||(lista[4]==-1 && lista[5]==-1 && lista[6]==-1)||(lista[7]==-1 && lista[8]==-1 && lista[9]==-1)||(lista[1]==-1 && lista[5]==-1 && lista[9]==-1)||(lista[3]==-1 && lista[5]==-1 && lista[7]==-1)||(lista[1]==-1 && lista[4]==-1 && lista[7]==-1)||(lista[2]==-1 && lista[5]==-1 && lista[8]==-1)||(lista[3]==-1 && lista[6]==-1 && lista[9]==-1)){
+              window.location.href='vito.html'
+            }
+          }
+    </script>
+  </body>	
+</html>
